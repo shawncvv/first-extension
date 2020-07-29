@@ -1,25 +1,38 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "icons": [
+  "name": "cookie",
+  "version": "1.0",
+  "description": "clickpaas cookie set",
+  "manifest_version": 2,
+  "permissions": [],
+  "page_action": {
+    "default_icon": "img/logo.png",
+    "default_title": "set your cookie",
+    "default_popup": "index.html"
+  },
+  "background": {
+    "scripts": [
+      "static/js/background.js"
+    ],
+    "persistent": false
+  },
+  "content_scripts": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "logo192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
+      "matches": [
+        "<all_urls>",
+        "*://*.clickpaas.com/*",
+        "*://*.localhost/*"
+      ],
+      "css": [
+        "static/css/content.css"
+      ],
+      "js": [
+        "static/js/content.js"
+      ],
+      "run_at": "document_end"
     }
   ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "web_accessible_resources": [
+    "insrt.js"
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
 }
