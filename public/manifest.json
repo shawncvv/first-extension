@@ -1,12 +1,16 @@
 {
-  "name": "cookie",
+  "name": "请求拦截助手",
   "version": "1.0",
-  "description": "clickpaas cookie set",
+  "description": "React开发chrome插件Demo。",
+  "icons": {
+    "16": "images/icon.png",
+    "48": "images/icon.png",
+    "128": "images/icon.png"
+  },
   "manifest_version": 2,
-  "permissions": [],
   "page_action": {
-    "default_icon": "img/logo.png",
-    "default_title": "set your cookie",
+    "default_icon": "images/icon.png",
+    "default_title": "React CRX",
     "default_popup": "index.html"
   },
   "background": {
@@ -18,9 +22,7 @@
   "content_scripts": [
     {
       "matches": [
-        "<all_urls>",
-        "*://*.clickpaas.com/*",
-        "*://*.localhost/*"
+        "<all_urls>"
       ],
       "css": [
         "static/css/content.css"
@@ -31,8 +33,13 @@
       "run_at": "document_end"
     }
   ],
-  "web_accessible_resources": [
-    "insrt.js"
+  "permissions": [
+    "tabs",
+    "declarativeContent",
+    "storage",
+    "notifications"
   ],
-  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+  "web_accessible_resources": [
+    "insert.js"
+  ]
 }
